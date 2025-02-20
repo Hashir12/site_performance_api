@@ -41,4 +41,7 @@ return [
         'redirect' => env('GOOGLE_REDIRECT_URI'),
     ],
 
+    'pagespeed' => [
+        'key' => env('LIGHT_HOUSE_API_KEY'),
+    ],
 ];
