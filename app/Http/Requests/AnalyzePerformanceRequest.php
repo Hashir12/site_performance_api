@@ -22,7 +22,7 @@ class AnalyzePerformanceRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'link' => 'required|url',
+            'websiteLink' => 'required|url',
             'platform' => 'required|string'
         ];
     }

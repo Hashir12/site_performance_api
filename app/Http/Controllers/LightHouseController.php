@@ -24,6 +24,6 @@ class LightHouseController extends Controller
             return response()->json(['error' => $result['error']], 400);
         }
 
-        return response()->json($result);
+        return response()->json(['data' => $result],201);
     }
 }

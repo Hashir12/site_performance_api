@@ -2,7 +2,9 @@
 
 namespace App\Services;
 
+use Illuminate\Http\Client\RequestException;
 use Illuminate\Support\Facades\Http;
+use Illuminate\Support\Facades\Log;
 
 class LightHouseService
 {
@@ -21,7 +23,7 @@ class LightHouseService
 
             $response = Http::get($this->apiUrl, [
                 'key' => $apiKey,
-                'url' => $data['link'],
+                'url' => $data['websiteLink'],
                 'strategy' => $data['platform'],
             ]);
 
@@ -40,11 +42,11 @@ class LightHouseService
                 throw new \Exception("Performance score not found in API response.");
             }
 
-            return ['performance_score' => $performanceScore * 100];
+            return $performanceScore * 100;
         } catch (RequestException $e) {
             Log::error('Lighthouse API RequestException: ' . $e->getMessage());
             return ['error' => 'A network error occurred while contacting the API.'];
-        } catch (Exception $e) {
+        } catch (\Exception $e) {
             Log::error('Lighthouse API Error: ' . $e->getMessage());
             return ['error' => $e->getMessage()];
         }
