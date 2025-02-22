@@ -18,3 +18,4 @@ Route::post('/login', [AuthController::class, 'login']);
 
 Route::get('/google-auth', [GoogleController::class, 'redirectToGoogle']);
 Route::get('/google-callback', [GoogleController::class, 'handleGoogleCallback']);
+Route::get('get/auth/token', [GoogleController::class, 'getAuthToken']);
